@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByteXSoftware | Desarrollo Web &amp; Marketing Digital</title>
+  <meta name="description"
+    content="Páginas web profesionales, redes sociales y presencia en Google para microempresas, mipymes y emprendedores en Colombia. Rápido, accesible y sin complicaciones.">
+
+  <!-- ── Fonts ─────────────────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- ── Stylesheet ────────────────────────────────────────────────────── -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- ── hls.js CDN (replaces Spline) ─────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       GRADIENT FALLBACK (shown on mobile / low-end / video error)
+  ══════════════════════════════════════════════════════════════════════ -->
+  <div class="hero-video-fallback" id="hero-video-fallback" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       HLS VIDEO BACKGROUND
+  ══════════════════════════════════════════════════════════════════════ -->
+  <div class="hero-video-bg" id="hero-video-bg" aria-hidden="true">
+    <video id="hero-video" muted autoplay loop playsinline></video>
+    <!-- Left-side dark gradient -->
+    <div class="hero-overlay-left"></div>
+    <!-- Bottom-to-top fade to page background -->
+    <div class="hero-overlay-bottom"></div>
+    <!-- Desktop grid lines at 25 / 50 / 75 % -->
+    <div class="hero-grid-lines" aria-hidden="true"><span></span></div>
+    <!-- Central SVG ellipse glow -->
+    <div class="hero-glow-wrap" aria-hidden="true">
+      <svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" width="100%">
+        <defs>
+          <filter id="glow-blur">
+            <feGaussianBlur stdDeviation="25" result="blur" />
+          </filter>
+        </defs>
+        <ellipse cx="400" cy="80" rx="340" ry="55" fill="none" stroke="url(#glow-grad)" stroke-width="60"
+          filter="url(#glow-blur)" opacity="0.55" />
+        <defs>
+          <linearGradient id="glow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#00D4FF" stop-opacity="0.0" />
+            <stop offset="35%" stop-color="#5ed29c" stop-opacity="0.8" />
+            <stop offset="65%" stop-color="#00D4FF" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="#00D4FF" stop-opacity="0.0" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       WA FLOATING BUTTON
+  ══════════════════════════════════════════════════════════════════════ -->
+  <a href="https://wa.link/qhrjzb" class="wa-float" target="_blank" rel="noopener noreferrer"
+    aria-label="Escríbenos por WhatsApp">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+    </svg>
+  </a>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="nav" role="navigation" aria-label="Navegación principal">
+    <a href="#inicio" class="nav-logo" aria-label="ByteXSoftware - Inicio">ByteXSoftware</a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#testimonios">Clientes</a></li>
+      <li><a href="#faqs">FAQs</a></li>
+      <li><a href="#contacto" class="nav-cta">Contáctanos</a></li>
+    </ul>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú de navegación" aria-expanded="false"
+      aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile full-screen menu overlay -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú móvil">
+    <a href="#servicios">Servicios</a>
+    <a href="#precios">Precios</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#testimonios">Clientes</a>
+    <a href="#faqs">FAQs</a>
+    <div class="mobile-menu-divider"></div>
+    <a href="#contacto">Contáctanos</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="inicio" aria-label="Sección principal">
+    <div class="hero-inner">
+
+      <!-- Eyebrow -->
+      <p class="hero-eyebrow">Desarrollo Web </p>
+
+      <!-- Main headline -->
+      <h1 class="hero-title">
+        Tu negocio visible<br>y digital<span class="period">.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-sub">
+        Páginas web profesionales, redes sociales y presencia en Google para microempresas,
+        mipymes y emprendedores. Rápido, accesible y sin complicaciones.
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-actions">
+        <a href="#precios" class="btn-primary" id="hero-cta-plans">
+          Ver paquetes
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://wa.link/qhrjzb" target="_blank" rel="noopener noreferrer" class="btn-ghost" id="hero-cta-wa">
+
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+          </svg>
+
+          Cotizar por WhatsApp
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats" role="list" aria-label="Estadísticas clave">
+        <div class="stat-item" role="listitem">
+          <div class="stat-val">48h</div>
+          <div class="stat-lbl">Primera entrega</div>
+        </div>
+        <div class="stat-item" role="listitem">
+          <div class="stat-val">6</div>
+          <div class="stat-lbl">Planes disponibles</div>
+        </div>
+        <div class="stat-item" role="listitem">
+          <div class="stat-val">100%</div>
+          <div class="stat-lbl">Responsive &amp; SSL</div>
+        </div>
+        <div class="stat-item" role="listitem">
+          <div class="stat-val">∞</div>
+          <div class="stat-lbl">Soporte post-entrega</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating UI cards (desktop only) -->
+    <div class="hero-float" aria-hidden="true">
+      <div class="fcard">
+        <div class="fcard-head">
+          <div class="fcard-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+          </div>
+          <h4>Diseño Web</h4>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:88%"></div>
+        </div>
+        <div class="bar-label">Responsive · SSL · SEO</div>
+      </div>
+      <div class="fcard">
+        <div class="fcard-head">
+          <div class="fcard-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+          </div>
+          <h4>Redes Sociales</h4>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill b2" style="width:74%"></div>
+        </div>
+        <div class="bar-label">Facebook · Instagram Pro</div>
+      </div>
+      <div class="fcard">
+        <div class="fcard-head">
+          <div class="fcard-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="11" r="3" />
+              <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            </svg>
+          </div>
+          <h4>Google Mi Negocio</h4>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill b3" style="width:92%"></div>
+        </div>
+        <div class="bar-label">Maps · Verificado</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SERVICIOS
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="section alt" id="servicios" aria-labelledby="sec-servicios-title">
+    <div class="max-w">
+      <div class="sec-head center reveal">
+        <div class="sec-label">// Servicios</div>
+        <h2 class="sec-title" id="sec-servicios-title">Todo para tu presencia<br>en internet</h2>
+        <p class="sec-sub">Soluciones digitales completas para que tu negocio crezca y sea encontrado por más clientes.
+        </p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card reveal d1">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <path d="M8 21h8M12 17v4" />
+            </svg>
+          </div>
+          <h3>Diseño Web Profesional</h3>
+          <p>Páginas modernas, rápidas y optimizadas para todos los dispositivos. Tu vitrina digital disponible 24/7.
+          </p>
+        </div>
+        <div class="svc-card reveal d2">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <h3>Dominio y Hosting</h3>
+          <p>Tu dirección propia en internet con certificado SSL, hosting seguro y disponibilidad garantizada.</p>
+        </div>
+        <div class="svc-card reveal d3">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2" />
+              <line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+          </div>
+          <h3>Redes Sociales</h3>
+          <p>Creación y configuración de Facebook Business e Instagram Profesional con identidad de marca aplicada.</p>
+        </div>
+        <div class="svc-card reveal d4">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="11" r="3" />
+              <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            </svg>
+          </div>
+          <h3>Google Mi Negocio</h3>
+          <p>Perfil verificado en Google Maps. Aparece cuando alguien busca tu tipo de negocio cerca de ti.</p>
+        </div>
+        <div class="svc-card reveal d5">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <h3>Correo Corporativo</h3>
+          <p>Emails con tu propio dominio. Genera confianza y credibilidad ante clientes y proveedores.</p>
+        </div>
+        <div class="svc-card reveal d6">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 4 23 10 17 10" />
+              <polyline points="1 20 1 14 7 14" />
+              <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+            </svg>
+          </div>
+          <h3>Mantenimiento Web</h3>
+          <p>Tu página siempre actualizada y segura. Soporte continuo, actualizaciones y mejoras mensuales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PRECIOS
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="section" id="precios" aria-labelledby="sec-precios-title">
+    <div class="max-w">
+      <div class="sec-head center reveal">
+        <div class="sec-label">// Planes y Precios</div>
+        <h2 class="sec-title" id="sec-precios-title">Elige el plan<br>que necesitas</h2>
+        <p class="sec-sub">Precios en pesos colombianos (COP), sin costos ocultos. Desde $70.000 para comenzar hoy
+          mismo.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- ULTRA BÁSICO -->
+        <div class="price-card reveal d1">
+          <div class="plan-tag">plan_01</div>
+          <div class="plan-name">Ultra Básico</div>
+          <div class="plan-tagline">Para empezar tu presencia digital hoy mismo</div>
+          <div class="plan-price-row">
+            <span class="price-sym">$</span>
+            <span class="price-amt">70.000</span>
+          </div>
+          <div class="price-period">COP · Pago único · Subdominio gratuito</div>
+          <ul class="plan-features">
+            <li>
+              <div class="feat-icon">✓</div><span>Landing page 1 sección</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Subdominio gratuito (.netlify.app)</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Botón WhatsApp integrado</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>100% responsive (móvil)</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Entrega en 1–2 días hábiles</span>
+            </li>
+          </ul>
+          <a href="./pages/plan-detalle.html?plan=ultra-basico" class="plan-btn">Quiero este plan →</a>
+        </div>
+
+        <!-- BÁSICO -->
+        <div class="price-card reveal d2">
+          <div class="plan-tag">plan_02</div>
+          <div class="plan-name">Básico</div>
+          <div class="plan-tagline">Tu negocio online con lo esencial bien hecho</div>
+          <div class="plan-price-row">
+            <span class="price-sym">$</span>
+            <span class="price-amt">100.000</span>
+          </div>
+          <div class="price-period">COP · Pago único · Subdominio + SSL gratis</div>
+          <ul class="plan-features">
+            <li class="plan-upsell">
+              <span>Todo lo que incluye <strong>Ultra Básico</strong>, además de:</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Página web hasta 3 secciones</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>SSL certificado</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Formulario de contacto</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Íconos de redes sociales</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Entrega en 2–3 días hábiles</span>
+            </li>
+          </ul>
+          <a href="./pages/plan-detalle.html?plan=basico" class="plan-btn">Quiero este plan →</a>
+        </div>
+
+        <!-- STARTER -->
+        <div class="price-card reveal d3">
+          <div class="plan-tag">plan_03</div>
+          <div class="plan-name">Starter</div>
+          <div class="plan-tagline">Web completa con tu dominio .com propio</div>
+          <div class="plan-price-row">
+            <span class="price-sym">$</span>
+            <span class="price-amt">250.000</span>
+          </div>
+          <div class="price-period">COP · Pago único · Dominio .com incluido 1 año</div>
+          <ul class="plan-features">
+            <li class="plan-upsell">
+              <span>Todo lo que incluye <strong>Básico</strong>, además de:</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Página web hasta 5 secciones</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Dominio .com por 1 año</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Hosting incluido</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Galería de imágenes</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>SEO básico · 1 mes soporte</span>
+            </li>
+          </ul>
+          <a href="./pages/plan-detalle.html?plan=starter" class="plan-btn">Quiero este plan →</a>
+        </div>
+
+        <!-- GROWTH -->
+        <div class="price-card featured reveal d1">
+          <div class="feat-badge">Más popular</div>
+          <div class="plan-tag">plan_04</div>
+          <div class="plan-name">Growth</div>
+          <div class="plan-tagline">Web + redes sociales = presencia digital completa</div>
+          <div class="plan-price-row">
+            <span class="price-sym">$</span>
+            <span class="price-amt">450.000</span>
+          </div>
+          <div class="price-period">COP · Pago único · Dominio incluido 1 año</div>
+          <ul class="plan-features">
+            <li class="plan-upsell">
+              <span>Todo lo que incluye <strong>Starter</strong>, además de:</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Página web hasta 8 secciones</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Facebook Business configurado</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Instagram Profesional + portadas</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>2 meses de soporte incluido</span>
+            </li>
+          </ul>
+          <a href="./pages/plan-detalle.html?plan=growth" class="plan-btn featured-btn">Quiero este plan →</a>
+        </div>
+
+        <!-- PRO -->
+        <div class="price-card reveal d2">
+          <div class="plan-tag">plan_05</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-tagline">Presencia total + Google Maps + correo propio</div>
+          <div class="plan-price-row">
+            <span class="price-sym">$</span>
+            <span class="price-amt">750.000</span>
+          </div>
+          <div class="price-period">COP · Pago único · 3 meses soporte incluido</div>
+          <ul class="plan-features">
+            <li class="plan-upsell">
+              <span>Todo lo que incluye <strong>Growth</strong>, además de:</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Google Mi Negocio verificado</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Integración Google Maps</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Correo corporativo (1 cuenta)</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Capacitación de uso incluida</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>3 meses de soporte incluido</span>
+            </li>
+          </ul>
+          <a href="./pages/plan-detalle.html?plan=pro" class="plan-btn">Quiero este plan →</a>
+        </div>
+
+        <!-- ELITE -->
+        <div class="price-card reveal d3">
+          <div class="plan-tag">plan_06</div>
+          <div class="plan-name">Elite</div>
+          <div class="plan-tagline">Todo en uno + mantenimiento mensual incluido</div>
+          <div class="plan-price-row">
+            <span class="price-sym">$</span>
+            <span class="price-amt">1.000.000</span>
+          </div>
+          <div class="price-period">COP inicio + $250.000/mes mantenimiento</div>
+          <ul class="plan-features">
+            <li class="plan-upsell">
+              <span>Todo lo que incluye <strong>Pro</strong>, además de:</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Hasta 2 correos corporativos</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Mantenimiento y actualizaciones</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Gestión básica de publicaciones</span>
+            </li>
+            <li>
+              <div class="feat-icon">✓</div><span>Soporte prioritario WhatsApp</span>
+            </li>
+          </ul>
+          <a href="./pages/plan-detalle.html?plan=elite" class="plan-btn">Quiero este plan →</a>
+        </div>
+
+      </div><!-- /pricing-grid -->
+
+      <p class="pricing-note reveal">
+        ¿Necesitas algo distinto?
+        <a href="https://wa.link/qhrjzb" target="_blank" rel="noopener noreferrer">Cotizamos a la medida de tu negocio
+          →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       NOSOTROS
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="section alt" id="nosotros" aria-labelledby="sec-nosotros-title">
+    <div class="max-w">
+      <div class="why-grid">
+        <div class="why-visual reveal">
+          <div class="why-box">
+            <div class="sec-label">// Por qué elegirnos</div>
+            <h2 class="sec-title" id="sec-nosotros-title"
+              style="font-size: clamp(1.5rem, 2.8vw, 2.2rem); margin-top: 0.5rem;">
+              Hechos para<br>emprendedores colombianos
+            </h2>
+            <p
+              style="font-size: 0.87rem; color: var(--muted2); margin-top: 0.8rem; line-height: 1.8; font-weight: 300;">
+              Sabemos lo que cuesta arrancar un negocio. Por eso combinamos diseño profesional,
+              y precios reales para darte resultados que se ven.
+            </p>
+            <div class="mini-stats">
+              <div class="mini-s">
+                <div class="n">+50</div>
+                <div class="l">Proyectos</div>
+              </div>
+              <div class="mini-s">
+                <div class="n">4.9★</div>
+                <div class="l">Satisfacción</div>
+              </div>
+              <div class="mini-s">
+                <div class="n">100%</div>
+                <div class="l">A tiempo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reasons reveal d2">
+          <div class="reason">
+            <div class="ri">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </div>
+            <div>
+              <h4>Entrega ultrarrápida</h4>
+              <p>Nuestro equipo de programadores trabaja para acelerar el desarrollo sin perder calidad. Tu web lista en
+                días, no semanas.</p>
+            </div>
+          </div>
+          <div class="reason">
+            <div class="ri">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+              </svg>
+            </div>
+            <div>
+              <h4>Atención directa sin intermediarios</h4>
+              <p>Hablas con quien hace tu proyecto. Respuesta en menos de 2 horas por WhatsApp, sin burocracia.</p>
+            </div>
+          </div>
+          <div class="reason">
+            <div class="ri">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v4l3 3" />
+              </svg>
+            </div>
+            <div>
+              <h4>Diseño único para tu negocio</h4>
+              <p>No usamos plantillas genéricas. Cada proyecto se construye pensando en tus clientes y tu sector.</p>
+            </div>
+          </div>
+          <div class="reason">
+            <div class="ri">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <div>
+              <h4>Visible en Google desde el día 1</h4>
+              <p>SEO básico incluido en todos los planes. Tu negocio aparece cuando alguien te busca en internet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       PROCESO
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="section" id="proceso" aria-labelledby="sec-proceso-title">
+    <div class="max-w">
+      <div class="sec-head center reveal">
+        <div class="sec-label">// Cómo trabajamos</div>
+        <h2 class="sec-title" id="sec-proceso-title">Del idea al lanzamiento<br>en 4 pasos simples</h2>
+        <p class="sec-sub">Un proceso claro y sin sorpresas. Tú te enfocas en tu negocio, nosotros en el digital.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step reveal d1">
+          <div class="step-num"><span>01</span></div>
+          <h3>Consulta gratis</h3>
+          <p>Escríbenos por WhatsApp. Analizamos tu negocio sin costo y te asesoramos sobre el plan ideal.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-num"><span>02</span></div>
+          <h3>Propuesta clara</h3>
+          <p>Recibes un presupuesto detallado y cronograma. Sin letras pequeñas ni cargos adicionales.</p>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-num"><span>03</span></div>
+          <h3>Desarrollo ágil</h3>
+          <p>Aceleramos la construcción de tu presencia digital sin sacrificar la calidad del resultado.</p>
+        </div>
+        <div class="step reveal d4">
+          <div class="step-num"><span>04</span></div>
+          <h3>Entrega + soporte</h3>
+          <p>Todo funcionando al 100% con capacitación de uso incluida y soporte post-entrega garantizado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       TESTIMONIOS
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="section alt" id="testimonios" aria-labelledby="sec-testimonios-title">
+    <div class="max-w">
+      <div class="sec-head center reveal">
+        <div class="sec-label">// Testimonios</div>
+        <h2 class="sec-title" id="sec-testimonios-title">Lo que dicen<br>nuestros clientes</h2>
+        <p class="sec-sub">Emprendedores y empresas que ya tienen su presencia digital profesional.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card reveal d1">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testi-text">"ByteXSoftware transformó mi negocio. Antes nadie me encontraba en internet; ahora
+            recibo clientes por Google todos los días. El proceso fue muy fácil y entregaron antes de lo prometido."</p>
+          <div class="testi-author">
+            <div class="author-avatar c1">AC</div>
+            <div>
+              <div class="author-name">Andrés Camacho</div>
+              <div class="author-role">Dueño · Ferretería El Constructor, Ibagué</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal d2">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testi-text">"Tenía miedo de que fuera costoso o complicado. El plan Growth fue perfecto: página web,
+            Instagram y Facebook listos en una semana. Mis ventas aumentaron desde el primer mes."</p>
+          <div class="testi-author">
+            <div class="author-avatar c2">LP</div>
+            <div>
+              <div class="author-name">Laura Pedraza</div>
+              <div class="author-role">Emprendedora · Repostería Dulce Momento</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal d3">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testi-text">"El equipo de ByteXSoftware entiende a los emprendedores. Me explicaron todo con
+            claridad, el diseño quedó espectacular y ahora aparezco en Google Maps cuando buscan mi servicio."</p>
+          <div class="testi-author">
+            <div class="author-avatar c3">JM</div>
+            <div>
+              <div class="author-name">Juan Moreno</div>
+              <div class="author-role">Director · Taller JM Servicios Técnicos</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal d4">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span
+              class="star">★</span><span class="star">★</span></div>
+          <p class="testi-text">"Contraté el plan Ultra Básico para probar y quedé encantada. La página se ve
+            profesional, me la entregaron al día siguiente y el botón de WhatsApp funciona perfecto. ¡Ya estoy pensando
+            en el siguiente plan!"</p>
+          <div class="testi-author">
+            <div class="author-avatar c4">MR</div>
+            <div>
+              <div class="author-name">Marcela Ríos</div>
+              <div class="author-role">Estilista · Studio MR Beauty, Ibagué</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FAQs
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="section" id="faqs" aria-labelledby="sec-faqs-title">
+    <div class="max-w">
+      <div class="sec-head center reveal">
+        <div class="sec-label">// FAQs</div>
+        <h2 class="sec-title" id="sec-faqs-title">Preguntas<br>frecuentes</h2>
+        <p class="sec-sub">Respuestas rápidas a las dudas más comunes sobre nuestros servicios.</p>
+      </div>
+      <div class="faqs-wrap">
+
+        <div class="faq-item reveal d1">
+          <button class="faq-btn" aria-expanded="false">
+            ¿Qué necesito para comenzar? <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-body" role="region">
+            <div class="faq-body-inner">Solo necesitas el nombre de tu negocio, una descripción de lo que haces, tu
+              número de WhatsApp y las fotos o logo si tienes. Nosotros te orientamos en todo lo demás. Si no tienes
+              logo, también podemos ayudarte a crearlo.</div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal d2">
+          <button class="faq-btn" aria-expanded="false">
+            ¿Cuánto tiempo tarda la entrega de mi página web? <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-body" role="region">
+            <div class="faq-body-inner">Depende del plan: Ultra Básico y Básico se entregan en 1–3 días hábiles. Starter
+              en 5–7 días. Growth en 7–10 días. Pro en 10–14 días y Elite en 14–20 días. Gracias al uso de inteligencia
+              artificial en el desarrollo, nuestros tiempos son significativamente más cortos que el promedio del
+              mercado.</div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal d3">
+          <button class="faq-btn" aria-expanded="false">
+            ¿Puedo actualizar la página después de entregada? <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-body" role="region">
+            <div class="faq-body-inner">Sí. Todos los planes incluyen un período de soporte post-entrega donde puedes
+              solicitar ajustes. Además, el plan Elite incluye mantenimiento mensual continuo. Para cambios fuera del
+              período de soporte, manejamos tarifas muy accesibles según el tipo de modificación.</div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal d4">
+          <button class="faq-btn" aria-expanded="false">
+            ¿La página va a verse bien en el celular? <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-body" role="region">
+            <div class="faq-body-inner">100% sí. Todas nuestras páginas son completamente responsive, lo que significa
+              que se adaptan perfectamente a celulares, tablets y computadores. Más del 70% de los usuarios navegan
+              desde el celular, por lo que esto es una prioridad en cada proyecto que entregamos.</div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal d5">
+          <button class="faq-btn" aria-expanded="false">
+            ¿Necesito conocimientos técnicos para manejar mi página? <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-body" role="region">
+            <div class="faq-body-inner">No. Todos los planes incluyen capacitación básica para que puedas entender cómo
+              funciona tu página y qué hacer en casos simples. Además, siempre puedes escribirnos por WhatsApp para
+              cualquier duda o solicitud de cambio.</div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal d6">
+          <button class="faq-btn" aria-expanded="false">
+            ¿Cómo es el proceso de pago? <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-body" role="region">
+            <div class="faq-body-inner">Manejamos pago contra entrega: pagas el 50% para iniciar el proyecto y el 50%
+              restante cuando lo recibes y quedes conforme. Aceptamos transferencias bancarias, Nequi, Daviplata y
+              efectivo. No iniciamos desarrollo sin confirmación de anticipo.</div>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-btn" aria-expanded="false">
+            ¿Qué pasa cuando vence el dominio o el hosting? <span class="faq-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-body" role="region">
+            <div class="faq-body-inner">Te avisamos con al menos 30 días de anticipación antes del vencimiento para que
+              puedas renovarlo. La renovación del dominio .com tiene un costo aproximado de $80.000–$120.000 COP
+              anuales. El hosting también se renueva anualmente a un costo que varía según el plan contratado.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       CONTACTO
+  ══════════════════════════════════════════════════════════════════════ -->
+  <section class="section alt" id="contacto" aria-labelledby="sec-contacto-title">
+    <div class="max-w">
+      <div class="sec-head reveal">
+        <div class="sec-label">// Contáctanos</div>
+        <h2 class="sec-title" id="sec-contacto-title">¿Listo para crecer<br>en el mundo digital?</h2>
+        <p class="sec-sub">Cotización gratis en menos de 24 horas. Sin compromiso.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="11" r="3" />
+                <path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+            </div>
+            <div><strong>Ubicación</strong><span>Colombia</span></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+              </svg>
+            </div>
+            <div><strong>WhatsApp directo</strong><span>+57 3028666626</span></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div><strong>Correo electrónico</strong><span>bytexsoftware7@gmail.com</span></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div><strong>Horario de atención</strong><span>Lunes a Sábado · 8:00 am – 7:00 pm</span></div>
+          </div>
+          <a href="https://wa.link/qhrjzb" target="_blank" rel="noopener noreferrer" class="wa-big-btn"
+            id="contact-wa-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            Escríbenos por WhatsApp
+          </a>
+        </div>
+
+        <div class="contact-form reveal d2">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="f-nombre">Nombre completo</label>
+              <input type="text" id="f-nombre" placeholder="Tu nombre" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="f-tel">WhatsApp / Teléfono</label>
+              <input type="tel" id="f-tel" placeholder="+57 3028666626" autocomplete="tel">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-plan">Plan de interés</label>
+            <select id="f-plan">
+              <option value="">Selecciona un plan</option>
+              <option>Ultra Básico – $70.000</option>
+              <option>Básico – $100.000</option>
+              <option>Starter – $250.000</option>
+              <option>Growth – $450.000</option>
+              <option>Pro – $750.000</option>
+              <option>Elite – $1.000.000</option>
+              <option>Plan personalizado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-msg">Cuéntanos de tu negocio</label>
+            <textarea id="f-msg"
+              placeholder="¿A qué se dedica? ¿Qué necesitas lograr con tu presencia digital?"></textarea>
+          </div>
+          <button class="form-submit" id="form-submit-btn" type="button">
+            Solicitar cotización gratis →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#inicio" class="footer-logo">ByteXSoftware</a>
+      <ul class="footer-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <p class="footer-copy">© 2025 ByteXSoftware · Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       SCRIPTS (deferred — run after DOM is ready)
+  ══════════════════════════════════════════════════════════════════════ -->
+  <script src="./js/hero.js" defer></script>
+  <script src="./js/main.js" defer></script>
+
+</body>
+
+</html>

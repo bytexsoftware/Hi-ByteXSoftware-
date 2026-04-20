@@ -1,0 +1,501 @@
+/* ════════════════════════════════════════════════════════════════════════════
+   plan-detalle.css
+   Styles specific to the Plan Detail page (pages/plan-detalle.html).
+   Depends on: ../css/style.css (design tokens + shared resets)
+════════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. PAGE LAYOUT ──────────────────────────────────────────────────────── */
+.detail-page {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Ambient gradient background */
+.detail-bg {
+    position:   fixed;
+    inset:      0;
+    z-index:    0;
+    pointer-events: none;
+    background: var(--bg);
+}
+
+.detail-bg::before {
+    content:    '';
+    position:   absolute;
+    top: -200px; right: -200px;
+    width:  700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(59,142,255,0.10), transparent 60%);
+    animation:  orb-float 9s ease-in-out infinite;
+}
+
+.detail-bg::after {
+    content:    '';
+    position:   absolute;
+    bottom: -150px; left: -100px;
+    width:  550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(94,210,156,0.08), transparent 60%);
+    animation:  orb-float 12s 4s ease-in-out infinite;
+}
+
+/* ── 2. NAVBAR OVERRIDES ─────────────────────────────────────────────────── */
+.detail-nav-back {
+    display:         inline-flex;
+    align-items:     center;
+    gap:             6px;
+    font-family:     'Inter', sans-serif;
+    font-size:       0.82rem;
+    font-weight:     600;
+    text-transform:  uppercase;
+    letter-spacing:  0.5px;
+    color:           var(--muted2);
+    text-decoration: none;
+    padding:         8px 18px;
+    border-radius:   50px;
+    border:          1px solid var(--border2);
+    background:      rgba(255, 255, 255, 0.04);
+    transition:      color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.detail-nav-back:hover {
+    color:        var(--green);
+    border-color: rgba(94, 210, 156, 0.4);
+    background:   rgba(94, 210, 156, 0.06);
+    transform:    translateY(-1px);
+}
+
+.detail-nav-back svg {
+    transition: transform 0.2s;
+}
+
+.detail-nav-back:hover svg {
+    transform: translateX(-3px);
+}
+
+/* ── 3. MAIN TWO-COLUMN LAYOUT ───────────────────────────────────────────── */
+.detail-main {
+    position:   relative;
+    z-index:    1;
+    display:    grid;
+    grid-template-columns: 1fr 1fr;
+    gap:        2rem;
+    max-width:  1100px;
+    margin:     0 auto;
+    padding:    calc(68px + 3rem) clamp(1.5rem, 4vw, 3rem) 5rem;
+    min-height: calc(100vh - 60px);
+    align-items: start;
+}
+
+@media (max-width: 860px) {
+    .detail-main {
+        grid-template-columns: 1fr;
+        padding-top: calc(68px + 2rem);
+    }
+}
+
+/* ── 4. PLAN CARD (left column) ──────────────────────────────────────────── */
+.detail-plan-card {
+    background:      rgba(255, 255, 255, 0.03);
+    border:          1px solid var(--border2);
+    border-radius:   var(--radius-lg);
+    padding:         2rem 2rem 2.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position:        sticky;
+    top:             calc(68px + 1.5rem);
+    display:         flex;
+    flex-direction:  column;
+    gap:             1.5rem;
+    animation:       fade-up 0.6s ease both;
+}
+
+/* Top accent line */
+.detail-plan-card::before {
+    content:       '';
+    position:      absolute;
+    top: 0; left: 0; right: 0;
+    height:        3px;
+    background:    var(--grd-green);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+@media (max-width: 860px) {
+    .detail-plan-card { position: static; }
+}
+
+/* Logo strip */
+.dpc-header {}
+
+.dpc-logo-strip {
+    display:     flex;
+    align-items: center;
+    gap:         6px;
+    margin-bottom: 1.4rem;
+}
+
+.dpc-logo-dot {
+    width:         8px;
+    height:        8px;
+    border-radius: 50%;
+    background:    var(--border2);
+}
+
+.dpc-logo-dot:nth-child(1) { background: #ff5f57; }
+.dpc-logo-dot:nth-child(2) { background: #febc2e; }
+.dpc-logo-dot:nth-child(3) { background: #28c840; }
+
+.dpc-logo-label {
+    font-family:    'JetBrains Mono', monospace;
+    font-size:      0.68rem;
+    letter-spacing: 1.5px;
+    color:          var(--muted);
+    margin-left:    6px;
+    text-transform: uppercase;
+}
+
+/* Plan name area */
+.dpc-plan-label {
+    font-family:    'JetBrains Mono', monospace;
+    font-size:      0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:          var(--blue);
+    margin-bottom:  0.25rem;
+}
+
+.dpc-plan-name {
+    font-family:    'Inter', sans-serif;
+    font-size:      clamp(1.6rem, 3vw, 2.2rem);
+    font-weight:    800;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color:          var(--white);
+    margin-bottom:  0.2rem;
+}
+
+.dpc-plan-tagline {
+    font-size:   0.82rem;
+    color:       var(--muted2);
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+}
+
+/* Price */
+.dpc-price-row {
+    display:     flex;
+    align-items: baseline;
+    gap:         6px;
+    flex-wrap:   wrap;
+}
+
+.dpc-price-sym {
+    font-size: 1.1rem;
+    color:     var(--muted2);
+}
+
+.dpc-price-amt {
+    font-family:    'Inter', sans-serif;
+    font-size:      clamp(1.8rem, 4vw, 2.4rem);
+    font-weight:    800;
+    letter-spacing: -2px;
+    color:          var(--white);
+}
+
+.dpc-price-period {
+    font-size: 0.75rem;
+    color:     var(--muted);
+}
+
+/* ── 5. BROWSER MOCKUP ───────────────────────────────────────────────────── */
+.dpc-mockup {
+    border-radius: var(--radius);
+    overflow:      hidden;
+    border:        1px solid var(--border2);
+}
+
+.dpc-browser {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.dpc-browser-bar {
+    display:       flex;
+    align-items:   center;
+    gap:           6px;
+    background:    rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid var(--border2);
+    padding:       8px 12px;
+}
+
+.dbc-dot {
+    width:         8px;
+    height:        8px;
+    border-radius: 50%;
+}
+
+.dbc-dot.r { background: #ff5f57; }
+.dbc-dot.y { background: #febc2e; }
+.dbc-dot.g { background: #28c840; }
+
+.dbc-url {
+    font-family:  'JetBrains Mono', monospace;
+    font-size:    0.62rem;
+    color:        var(--muted);
+    margin-left:  8px;
+    overflow:     hidden;
+    white-space:  nowrap;
+    text-overflow: ellipsis;
+}
+
+.dbc-screen {
+    /* Base container — used by both flavors */
+    overflow:  hidden;
+}
+
+/* ── Image-preview variant ── */
+.dbc-screen--img {
+    max-height:    320px;
+    overflow-y:    auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(94,210,156,0.4) transparent;
+}
+
+.dbc-screen--img::-webkit-scrollbar       { width: 4px; }
+.dbc-screen--img::-webkit-scrollbar-thumb { background: rgba(94,210,156,0.4); border-radius: 4px; }
+
+.dbc-preview-img {
+    display:    block;
+    width:      100%;
+    height:     auto;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.dpc-mockup:hover .dbc-preview-img {
+    transform: scale(1.02);
+}
+
+/* Caption below the browser */
+.dpc-mockup-caption {
+    text-align:  center;
+    font-size:   0.74rem;
+    color:       var(--green);
+    margin-top:  0.6rem;
+    letter-spacing: 0.3px;
+    opacity:     0.85;
+}
+
+/* ── 6. PLAN FEATURES LIST ───────────────────────────────────────────────── */
+.dpc-features {
+    list-style:  none;
+    border-top:  1px solid var(--border2);
+    padding-top: 1.2rem;
+    display:     flex;
+    flex-direction: column;
+    gap:         4px;
+}
+
+.dpc-features li {
+    display:     flex;
+    align-items: flex-start;
+    gap:         10px;
+    font-size:   0.82rem;
+    color:       var(--muted2);
+    padding:     4px 0;
+    line-height: 1.45;
+}
+
+.dpc-features li span    { color: var(--white); }
+.dpc-features .feat-icon { margin-top: 1px; flex-shrink: 0; }
+
+/* upsell phrase inside plan detail card */
+.dpc-features .plan-upsell {
+    padding:       6px 10px !important;
+    margin-bottom: 2px;
+}
+
+/* ── 7. CONTACT FORM (right column) ──────────────────────────────────────── */
+.detail-form-card {
+    background:      rgba(255, 255, 255, 0.03);
+    border:          1px solid var(--border2);
+    border-radius:   var(--radius-lg);
+    padding:         2rem 2rem 2.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    animation:       fade-up 0.6s 0.15s ease both;
+}
+
+.dfc-title {
+    font-family:    'Inter', sans-serif;
+    font-size:      1.4rem;
+    font-weight:    800;
+    letter-spacing: -0.5px;
+    color:          var(--white);
+    margin-bottom:  0.4rem;
+}
+
+.dfc-subtitle {
+    font-size:     0.85rem;
+    color:         var(--muted2);
+    line-height:   1.7;
+    margin-bottom: 2rem;
+}
+
+/* ── 8. FORM FIELDS ──────────────────────────────────────────────────────── */
+.dfc-form {
+    display:        flex;
+    flex-direction: column;
+    gap:            1.25rem;
+}
+
+/* Reuse shared form-group, label, input, textarea, select from style.css */
+/* Additional overrides */
+.dfc-form label {
+    display:      block;
+    font-size:    0.8rem;
+    font-weight:  600;
+    color:        var(--muted2);
+    margin-bottom: 0.45rem;
+    letter-spacing: 0.3px;
+}
+
+.dfc-form input,
+.dfc-form textarea {
+    width:           100%;
+    background:      rgba(255, 255, 255, 0.04);
+    border:          1px solid var(--border2);
+    border-radius:   var(--radius);
+    padding:         0.85rem 1rem;
+    font-family:     'Poppins', sans-serif;
+    font-size:       0.88rem;
+    color:           var(--white);
+    outline:         none;
+    transition:      border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    resize:          vertical;
+}
+
+.dfc-form input::placeholder,
+.dfc-form textarea::placeholder {
+    color: var(--muted);
+}
+
+.dfc-form input:focus,
+.dfc-form textarea:focus {
+    border-color: rgba(94, 210, 156, 0.5);
+    background:   rgba(94, 210, 156, 0.04);
+    box-shadow:   0 0 0 3px rgba(94, 210, 156, 0.08);
+}
+
+.dfc-form input.error,
+.dfc-form textarea.error {
+    border-color: rgba(239, 68, 68, 0.6);
+    box-shadow:   0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.field-error {
+    display:   block;
+    font-size: 0.74rem;
+    color:     #ef4444;
+    margin-top: 4px;
+}
+
+/* ── 9. SUBMIT BUTTON ────────────────────────────────────────────────────── */
+.dfc-submit {
+    display:         inline-flex;
+    align-items:     center;
+    justify-content: center;
+    gap:             8px;
+    width:           100%;
+    padding:         14px 24px;
+    border-radius:   50px;
+    border:          none;
+    background:      var(--green);
+    color:           #070b0a;
+    font-family:     'Inter', sans-serif;
+    font-size:       0.9rem;
+    font-weight:     700;
+    text-transform:  uppercase;
+    letter-spacing:  0.5px;
+    cursor:          pointer;
+    transition:      transform 0.3s, box-shadow 0.3s, background 0.3s, opacity 0.3s;
+    box-shadow:      0 4px 24px rgba(94, 210, 156, 0.3);
+}
+
+.dfc-submit svg { transition: transform 0.3s; }
+
+.dfc-submit:hover {
+    transform:  translateY(-2px);
+    box-shadow: 0 8px 32px rgba(94, 210, 156, 0.45);
+    background: #79ddb0;
+}
+
+.dfc-submit:hover svg { transform: translateX(4px); }
+
+.dfc-submit:disabled {
+    opacity: 0.6;
+    cursor:  not-allowed;
+    transform: none;
+}
+
+/* ── 10. SUCCESS STATE ───────────────────────────────────────────────────── */
+.dfc-success {
+    text-align: center;
+    padding:    3rem 1rem;
+}
+
+.dfc-success-icon {
+    width:           64px;
+    height:          64px;
+    border-radius:   50%;
+    background:      rgba(94, 210, 156, 0.15);
+    border:          2px solid rgba(94, 210, 156, 0.4);
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    font-size:       1.8rem;
+    color:           var(--green);
+    margin:          0 auto 1.2rem;
+}
+
+.dfc-success h3 {
+    font-size:     1.3rem;
+    font-weight:   700;
+    margin-bottom: 0.6rem;
+}
+
+.dfc-success p {
+    font-size:   0.88rem;
+    color:       var(--muted2);
+    line-height: 1.7;
+    max-width:   320px;
+    margin:      0 auto 1.5rem;
+}
+
+.dfc-back-link {
+    display:         inline-block;
+    color:           var(--blue);
+    text-decoration: none;
+    font-weight:     600;
+    font-size:       0.85rem;
+    transition:      color 0.2s;
+}
+
+.dfc-back-link:hover { color: var(--green); }
+
+/* ── 11. FOOTER ──────────────────────────────────────────────────────────── */
+.detail-footer {
+    position:   relative;
+    z-index:    1;
+    text-align: center;
+    padding:    1.5rem;
+    font-size:  0.8rem;
+    color:      var(--muted);
+    border-top: 1px solid var(--border2);
+}
+
+.detail-footer a {
+    color:           var(--blue);
+    text-decoration: none;
+    transition:      color 0.2s;
+}
+
+.detail-footer a:hover { color: var(--green); }

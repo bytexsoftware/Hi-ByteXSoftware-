@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByteXSoftware | Detalle del Plan</title>
+  <meta name="description"
+    content="Conoce todos los detalles de tu plan elegido y solicita tu cotización gratuita con ByteXSoftware.">
+
+  <!-- ── Fonts ─────────────────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- ── Shared stylesheet ─────────────────────────────────────────────── -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- ── Page-specific styles ─────────────────────────────────────────── -->
+  <link rel="stylesheet" href="../css/plan-detalle.css">
+</head>
+
+<body class="detail-page">
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       GRADIENT BACKGROUND
+  ══════════════════════════════════════════════════════════════════════ -->
+  <div class="detail-bg" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="nav" role="navigation" aria-label="Navegación principal">
+    <a href="../ByteXSoftware.html" class="nav-logo" aria-label="ByteXSoftware - Inicio">ByteXSoftware</a>
+    <a href="../ByteXSoftware.html#precios" class="detail-nav-back" id="btn-inicio">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Inicio
+    </a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════════════════════════════════ -->
+  <main class="detail-main" id="main-content">
+
+    <!-- ── Left: Plan Preview ──────────────────────────────────────────── -->
+    <article class="detail-plan-card" id="plan-card" aria-label="Detalle del plan seleccionado">
+
+      <!-- Plan header -->
+      <header class="dpc-header">
+        <div class="dpc-logo-strip" aria-hidden="true">
+          <div class="dpc-logo-dot"></div>
+          <div class="dpc-logo-dot"></div>
+          <div class="dpc-logo-dot"></div>
+          <span class="dpc-logo-label">ByteXSoftware</span>
+        </div>
+
+        <div class="dpc-plan-label" id="plan-tag">plan_01</div>
+        <h1 class="dpc-plan-name" id="plan-name">Ultra Básico</h1>
+        <p class="dpc-plan-tagline" id="plan-tagline">Para empezar tu presencia digital hoy mismo</p>
+
+        <div class="dpc-price-row">
+          <span class="dpc-price-sym">$</span>
+          <span class="dpc-price-amt" id="plan-price">70.000</span>
+          <span class="dpc-price-period" id="plan-period">COP · Pago único</span>
+        </div>
+      </header>
+
+      <!-- Mockup preview -->
+      <div class="dpc-mockup" aria-label="Vista previa de página web de ejemplo">
+        <div class="dpc-browser">
+          <div class="dpc-browser-bar">
+            <span class="dbc-dot r"></span>
+            <span class="dbc-dot y"></span>
+            <span class="dbc-dot g"></span>
+            <span class="dbc-url" id="dbc-url-label">tunegocio.netlify.app</span>
+          </div>
+          <div class="dbc-screen dbc-screen--img">
+            <img
+              id="dbc-preview-img"
+              src="../images/Ultra Basico.png"
+              alt="Ejemplo de página web Plan Ultra Básico"
+              class="dbc-preview-img"
+              loading="lazy"
+              draggable="false">
+          </div>
+        </div>
+        <p class="dpc-mockup-caption">
+          ✦ Así podría verse la página web de tu negocio
+        </p>
+      </div>
+
+      <!-- Features -->
+      <ul class="dpc-features" id="plan-features" aria-label="Características del plan">
+        <!-- Dynamically populated by plan-detail.js -->
+      </ul>
+
+    </article>
+
+    <!-- ── Right: Contact Form ─────────────────────────────────────────── -->
+    <section class="detail-form-card" aria-labelledby="form-title">
+      <h2 class="dfc-title" id="form-title">Solicitar este plan</h2>
+      <p class="dfc-subtitle">Cuéntanos de tu negocio y te contactamos en menos de 2 horas por WhatsApp.</p>
+
+      <form class="dfc-form" id="plan-contact-form" novalidate aria-label="Formulario de solicitud de plan">
+
+        <div class="form-group">
+          <label for="dp-nombre">Nombre Completo</label>
+          <input
+            type="text"
+            id="dp-nombre"
+            name="nombre"
+            placeholder="Tu nombre completo"
+            autocomplete="name"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="dp-wa">WhatsApp</label>
+          <input
+            type="tel"
+            id="dp-wa"
+            name="whatsapp"
+            placeholder="+57 300 000 0000"
+            autocomplete="tel"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="dp-negocio">Cuéntanos de tu negocio</label>
+          <textarea
+            id="dp-negocio"
+            name="negocio"
+            placeholder="¿A qué se dedica tu negocio? ¿Qué necesitas lograr con tu presencia digital?"
+            rows="5"
+            required></textarea>
+        </div>
+
+        <!-- Hidden: carries the plan name -->
+        <input type="hidden" id="dp-plan" name="plan" value="">
+
+        <button type="submit" class="dfc-submit" id="dp-submit">
+          Enviar
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </button>
+
+      </form>
+
+      <!-- Success state (hidden by default) -->
+      <div class="dfc-success" id="dfc-success" role="alert" aria-live="polite" hidden>
+        <div class="dfc-success-icon">✓</div>
+        <h3>¡Mensaje enviado!</h3>
+        <p>Te contactaremos en menos de 2 horas por WhatsApp. ¡Gracias por confiar en ByteXSoftware!</p>
+        <a href="../ByteXSoftware.html" class="dfc-back-link">← Volver al inicio</a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════════════════ -->
+  <footer class="detail-footer">
+    <p>© 2025 ByteXSoftware · <a href="../ByteXSoftware.html">bytexsoftware.com</a></p>
+  </footer>
+
+  <!-- ── Scripts ───────────────────────────────────────────────────────── -->
+  <script src="../js/plan-detail.js" defer></script>
+
+</body>
+
+</html>
